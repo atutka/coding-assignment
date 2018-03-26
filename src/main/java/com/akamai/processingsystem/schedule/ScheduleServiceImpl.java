@@ -51,25 +51,16 @@ public class ScheduleServiceImpl implements ScheduleService
       {
          throw new IllegalArgumentException();
       }
-      List<Job> performedJobs = schedule.findWorkingJobs(request.getTimestamp());
-      long cost = performedJobs.stream().mapToInt(Job::getCost).sum();
-      List<Long> jobsIds = performedJobs.stream().map(Job::getId).collect(Collectors.toList());
+      List<Job> workingJobs = schedule.findWorkingJobs(request.getTimestamp());
+      long cost = workingJobs.stream()
+              .mapToInt(Job::getCost)
+              .sum();
+      List<Long> jobsIds = workingJobs.stream()
+              .map(Job::getId)
+              .collect(Collectors.toList());
       long nextTask = schedule.findNextWorkingJob(request.getTimestamp()).getId();
       LocalDateTime nextTaskDateTime = schedule.calculateNextWorkingJobTime(request.getTimestamp());
       return new ScheduleInformation(cost, jobsIds, nextTask, nextTaskDateTime);
-//      int maxPeriod = jobs.stream().max(Comparator.comparingInt(Job::getPeriod)).get().getPeriod();
-//      sx.setMaxPeriod(maxPeriod);
-//      NavigableMap<Integer, List<Job>> jobsByPeriod = jobs.stream()
-//              .collect(Collectors.groupingBy(Job::getPeriod, TreeMap::new, Collectors.toList()));
-//      for(Map.Entry<Integer, List<Job>> entry : jobsByPeriod.entrySet())
-//      {
-//         Integer period = entry.getKey();
-//         List<Job> jobList = entry.getValue().stream().sorted((j1, j2)-> Integer.compare(j2.getCost(), j1.getCost())).collect(Collectors.toList());
-//         jobList.forEach(sx::addSlot);
-//
-//      }
-//      List<Job> minimalPerionJobs = jobs.stream().sorted((j1, j2)-> Integer.compare(j2.getCost(), j1.getCost())).collect(Collectors.toList());
-//      return null;
    }
 
    @Override

@@ -10,7 +10,7 @@ import java.util.UUID;
 public class ScheduleDTOMapper implements Mapper<Schedule, ScheduleDTO>
 {
    @Override
-   public ScheduleDTO mapper(Schedule schedule)
+   public ScheduleDTO map(Schedule schedule)
    {
       ScheduleDTO scheduleDTO = new ScheduleDTO();
       UUID id = schedule.getId();

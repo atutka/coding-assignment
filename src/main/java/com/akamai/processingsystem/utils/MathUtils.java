@@ -7,7 +7,7 @@ public class MathUtils
    /**
     * Calculate Lowest Common Multipier for multiple values
     */
-   public static int calculateLcm(List<Integer> values)
+   public static int lcm(List<Integer> values)
    {
       int lcm = values.get(0);
       for (int i = 1; i < values.size(); i++)

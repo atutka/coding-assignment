@@ -10,6 +10,6 @@ public interface Mapper<SOURCE, TARGET>
     * @return
     *    new object mapped to
     */
-   TARGET mapper(SOURCE source);
+   TARGET map(SOURCE source);
 
 }

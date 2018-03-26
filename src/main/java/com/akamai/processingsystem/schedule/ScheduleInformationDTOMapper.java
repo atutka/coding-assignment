@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class ScheduleInformationDTOMapper implements Mapper<ScheduleInformation, ScheduleInformationDTO>
 {
    @Override
-   public ScheduleInformationDTO mapper(ScheduleInformation scheduleInformation)
+   public ScheduleInformationDTO map(ScheduleInformation scheduleInformation)
    {
       return new ScheduleInformationDTO(scheduleInformation.getCost(),
               scheduleInformation.getJobIds(),
